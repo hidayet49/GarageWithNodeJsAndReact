@@ -1,6 +1,6 @@
 const express=require('express');
 const app=express();
-const {connect,close}=require('./support/dbConnect')
+const db=require('./support/dbConnect')
 // Import required Routes
 const mainRouter=require('./routes')
 // mongoose
@@ -11,12 +11,13 @@ const PORT=3000
 
 // envirement config
 dotenv.config();
-
-// Connect to DB
-connect();
 //MIDDLEWARES
-app.use(express.json())
+app.use(express.json());
 // ROUTING
-mainRouter(app)
+mainRouter(app);
+// Connect to DB
+db.connect().then(()=>{
+    app.listen(PORT,()=>console.log("server up and running"));
+})
 
-app.listen(PORT,()=>console.log("server up and running"))
+
