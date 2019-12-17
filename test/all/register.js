@@ -61,7 +61,7 @@ describe('ALL /register',()=>{
         })
         .catch(error=>done(error))
     })
-    it('Fail, Wrong written email test',(done)=>{
+    it('Fail, Fail, valid email address check!',(done)=>{
         request(app).post('/api/all/register')
         .send({
             name:"test2",
