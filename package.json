@@ -4,7 +4,7 @@
   "description": "IT solution for garage",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --recursive --exit",
+    "test": "mocha --recursive --exit --timeout 30000",
     "start": "nodemon app.js"
   },
   "repository": {
