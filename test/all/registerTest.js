@@ -43,6 +43,7 @@ describe('ALL /register',()=>{
             expect(body).to.contain.property('phone');
             done();
         })
+        .catch(error=>done(error))
     })
     it('Fail, The existed email test',(done)=>{
         request(app).post('/api/all/register')
@@ -58,6 +59,7 @@ describe('ALL /register',()=>{
             expect(body).equal('The Email is Already exist. If you forgot your password, please click I Forgot! button');
             done();
         })
+        .catch(error=>done(error))
     })
     it('Fail, Wrong written email test',(done)=>{
         request(app).post('/api/all/register')
@@ -73,6 +75,7 @@ describe('ALL /register',()=>{
             expect(res.text).equal(`"email" must be a valid email`);
             done();
         })
+        .catch(error=>done(error))
     })
     it('Fail, password check',(done)=>{
         request(app).post('/api/all/register')
@@ -88,5 +91,38 @@ describe('ALL /register',()=>{
             expect(res.text).equal(`"password" length must be at least 6 characters long`);
             done();
         })
+        .catch(error=>done(error))
+    })
+    it('Fail, name check',(done)=>{
+        request(app).post('/api/all/register')
+        .send({
+            name:"t",
+            surname:"test",
+            email:"test3@gmail.com",
+            password:"abc1123123",
+            phone:"123121231"
+        })
+        .then((res)=>{         
+            expect(res.status).equal(400);    
+            expect(res.text).equal(`"name" length must be at least 3 characters long`);
+            done();
+        })
+        .catch(error=>done(error))
+    })
+    it('Fail, surname check',(done)=>{
+        request(app).post('/api/all/register')
+        .send({
+            name:"tester",
+            surname:"t",
+            email:"test3@gmail.com",
+            password:"abc1123123",
+            phone:"123121231"
+        })
+        .then((res)=>{         
+            expect(res.status).equal(400);    
+            expect(res.text).equal(`"surname" length must be at least 3 characters long`);
+            done();
+        })
+        .catch(error=>done(error))
     })
 })
