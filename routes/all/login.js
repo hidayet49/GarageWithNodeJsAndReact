@@ -8,7 +8,7 @@ const jwt=require('jsonwebtoken');
 module.exports=async (req,res)=>{
     const { error } = loginValidation(req.body);
     if(error){
-        return res.send(error.message);  
+        return res.status(400).send(error.message);  
     }
     //email check
     const user=await User.findOne({email:req.body.email});
