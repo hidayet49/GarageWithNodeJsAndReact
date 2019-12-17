@@ -2,7 +2,6 @@ const expect=require('chai').expect;
 const request=require('supertest');
 const app=require('../../app');
 const conn=require('../../support/dbConnect');
-const User = require('../../models/user')
 
 describe('ALL /login',()=>{  
     // after test
@@ -59,7 +58,7 @@ describe('ALL /login',()=>{
             password:"abc12345",
         })
         .then((res)=>{         
-            expect(res.status).equal(400);    
+            expect(400);    
             expect(res.text).equal(`"email" must be a valid email`);
             done();
         })
@@ -72,7 +71,7 @@ describe('ALL /login',()=>{
             password:"abc1",
         })
         .then((res)=>{         
-            expect(res.status).equal(400);    
+            expect(400);    
             expect(res.text).equal(`"password" length must be at least 6 characters long`);
             done();
         })
