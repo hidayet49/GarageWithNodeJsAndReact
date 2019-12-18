@@ -15,10 +15,9 @@ module.exports = async function auth(req, res, next) {
 
     // Validate Token
     try {
+
         const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-
-
-        const user = await User.findOne({ _id: verified._id });
+        const user = await User.findOne({ _id: verified._id });        
         if (!user) {
             return res.status(401).send('Access denied!!');
         }
