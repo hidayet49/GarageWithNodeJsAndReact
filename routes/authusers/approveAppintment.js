@@ -10,7 +10,7 @@ module.exports=async(req,res)=>{
         const appointment=await Appointment.findOne({_id:id});
         // Check here the authority of the user... If this appointmet is not belong to the user, reject the request
         if(appointment.owner!==req.user.id){
-            return res.status(403).send('You are not authority to make an approvement!!!')
+            return res.status(403).send(`You don't have authority to make an approvement!!!`)
         }
          //Approve can make just after date and time..
         //Check if date and time is set or not
@@ -19,10 +19,13 @@ module.exports=async(req,res)=>{
         }
         //Update approve field of appointment
         //Check here also the owner to prevent the manipulation of the misusage
-
+        if(appointment.approved){
+            return res.send('Your appointment is already approved!') 
+        }
         await Appointment.updateOne({_id:id,owner:req.user.id},{approved:true});
         res.send('Your approvement is successfull!')
     } catch (error) {
-        return res.status(500).send(error);
+        console.log(error);
+        return res.status(500).send("There is an error occured!! Please try again later!");
     }
 }
