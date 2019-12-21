@@ -63,7 +63,8 @@ appointmentValidation=(data)=>{
         return (data);
     }
     //If the model is not in our model list
-    if(!models.find(element=>element.brand==data.brand)){
+    let myModels=models.find(element=>element.brand==data.brand)
+    if( myModels.models.indexOf(data.model)<0 ){
         data.error={message:'Please select the model from list!!!'};
         return (data);
     }
