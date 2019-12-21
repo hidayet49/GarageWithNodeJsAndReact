@@ -10,6 +10,10 @@ module.exports=async(req,res)=>{
         return res.status(400).send(error.message);
     }
     try {
+        const appointment = await Appointment.findById(req.body.id);
+        if(appointment.approved){
+            return res.send('Approved appointments cannot change!!!')
+        }
         await Appointment.updateOne({_id:req.body.id},{hour:req.body.hour,date:req.body.date});
         res.send('Successfully updated!!!')
     } catch (error) {
