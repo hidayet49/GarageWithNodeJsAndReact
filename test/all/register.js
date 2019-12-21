@@ -7,23 +7,11 @@ const User = require('../../models/user')
 describe('ALL /register',()=>{
     before((done)=>{
         conn.connect()
-        .then( ()=>{
-            User.deleteMany({email:'test@gmail.com'}).then(value=>console.log(`deleted count: ${value.deletedCount}`));
-            
+        .then(async ()=>{
+            await User.deleteMany({email:'test@gmail.com'}).then(value=>console.log(`deleted count: ${value.deletedCount}`));
             done();  
         })
-        .catch(error=>done(error));
-        
-    })
-    // after test
-    after((done)=>{
-        conn.close()
-        .then(()=>{
- 
-            done()
-        })
-        .catch(error=>done(error));
-        
+        .catch(error=>done(error))   
     })
     it('OK,Create a new registration post',(done)=>{
         request(app).post('/api/all/register')
