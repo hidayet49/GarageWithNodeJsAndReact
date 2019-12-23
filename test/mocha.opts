@@ -1,0 +1,6 @@
+--file ./test/all/register.js
+--file ./test/all/login.js
+--file ./test/authusers/getMyInfo.js
+--file ./test/authusers/newAppointment.js
+--file ./test/authusers/getMyAppointments.js
+--file ./test/authusers/approveAppointment.js
