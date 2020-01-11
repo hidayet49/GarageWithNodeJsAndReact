@@ -22,7 +22,7 @@ module.exports = async(req,res)=>{
         //Fist Check the user email exist or not!
         const emailExist = await User.findOne({ email: req.body.email })
         if (emailExist) {
-            return res.json("The Email is Already exist. If you forgot your password, please click I Forgot! button")
+            return res.status(400).send("The Email is Already exist. If you forgot your password, please click I Forgot! button")
         }
 
         //Hash password
