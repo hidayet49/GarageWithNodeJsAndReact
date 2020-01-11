@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+const cors = require('cors');
 const db=require('./support/dbConnect')
 // Import required Routes
 const mainRouter=require('./routes')
@@ -10,6 +11,8 @@ const PORT=8000
 dotenv.config();
 //MIDDLEWARES
 app.use(express.json());
+//CORS
+app.use(cors());
 // ROUTING
 mainRouter(app);
 // Connect to DB
