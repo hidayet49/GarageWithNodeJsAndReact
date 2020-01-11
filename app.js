@@ -5,7 +5,7 @@ const db=require('./support/dbConnect')
 const mainRouter=require('./routes')
 //Secure our password
 const dotenv=require('dotenv');
-const PORT=3000
+const PORT=8000
 // envirement config
 dotenv.config();
 //MIDDLEWARES
