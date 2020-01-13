@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --recursive --exit --timeout 30000",
-    "start": "nodemon app.js"
+    "start":"node app.js",
+    "server":"node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
