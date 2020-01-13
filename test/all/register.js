@@ -43,8 +43,8 @@ describe('ALL /register',()=>{
             phone:"123121231"
         })
         .then((res)=>{
-            const body=res.body;
-            expect(body).equal('The Email is Already exist. If you forgot your password, please click I Forgot! button');
+            expect(res.status).equal(400)
+            expect(res.text).equal('The Email is Already exist. If you forgot your password, please click I Forgot! button');
             done();
         })
         .catch(error=>done(error))
