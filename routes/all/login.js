@@ -24,7 +24,11 @@ module.exports=async (req,res)=>{
     //Create and assign aToken
     const token=jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
     //Set Header
-    res.header('auth-token',token).send('You are successfully logged in!!')
+    res.header('auth-token',token).json({
+        message:'You are successfully logged in!!',
+        token:token,
+        role:user.role
+    })
     
     
     //res.headers('auth-token',token).send(token);
