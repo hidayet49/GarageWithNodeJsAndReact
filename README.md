@@ -12,7 +12,7 @@ Just need NodeJs
 https://nodejs.org/en/
 
 
-### Installing
+### Installing server dependencies
 npm install
 
 ## Running the tests
@@ -28,8 +28,16 @@ npm run client
 
 ## Run in Nodemon mode
 npm run dev
+## installing  client dependencies
+npm run client-install
 
-##External Dependencies
+## run frontend 
+npm run client
+
+## run concurrently server and frontend 
+npm run all
+
+## External Dependencies
 MongoDB is used in this project..
 https://cloud.mongodb.com/
 

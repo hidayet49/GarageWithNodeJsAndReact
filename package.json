@@ -7,7 +7,9 @@
     "test": "mocha --recursive --exit --timeout 30000",
     "start":"node app.js",
     "server":"node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "client-install": "cd frontend && npm install",
+    "client": "npm start --prefix frontend"
   },
   "repository": {
     "type": "git",
